@@ -1,0 +1,93 @@
+<div id="page-content-wrapper" style="margin-top:50px;">
+
+    <h2>Détails Forms "{{formName}}"</h2>
+
+    <loading></loading>
+
+    <hr/>
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Résumé</h3>
+                </div>
+                <div class="panel-body">
+                    Nombre de block(s) : <strong>{{formStats.numberOfBlocks}}</strong><br/>
+                    Nombre de Triggers : <strong>{{formStats.numberOfTriggers}}</strong><br/>
+                    Nombre d'Items : <strong>{{formStats.numberOfItems}}</strong><br/>
+                    Nombre de canvas : <strong>{{formStats.numberOfCanvas}}</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title">PL/SQL</h3>
+                </div>
+                <div class="panel-body">
+                    Nombre de lignes de code :
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Blocks</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped table-hover">
+                <th>Block</th>
+                <th>Nb triggers</th>
+                <!-- Todo : Mettre un hover sur la table pour surbrillance sur la selection -->
+                <tr ng-repeat="block in blocks" ng-click="getBlockInfos(block.Name)">
+                    <td>{{block.Name}}</td>
+                    <td>{{block.TriggersNumber}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Onglets -->
+    <tabset>
+        <tab select="">
+            <tab-heading>Détails</tab-heading>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Détails {{selectedBlockName}}</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <th>Nom</th>
+                        <th>Basé</th>
+                        <th>QueryDataSourceName</th>
+                        <tr>
+                            <td>{{currentBlockData.Name}}</td>
+                            <td>{{currentBlockData.DatabaseBlock}}</td>
+                            <td>{{currentBlockData.QueryDataSourceName}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </tab>
+
+        <tab select="">
+            <tab-heading>
+                Triggers
+            </tab-heading>
+            <table class="table table-striped table-hover">
+                <th>Nom</th>
+                <th>Code PL/SQL</th>
+                <!-- Todo : Mettre un hover sur la table pour surbrillance sur la selection -->
+                <tr ng-repeat="trigger in triggersForBlock">
+                    <td>{{trigger.Name}}</td>
+                    <td><span ng-bind-html="trigger.TriggerText"></span></td>
+                </tr>
+            </table>
+        </tab>
+    </tabset>
+
+</div>
+<hr/>

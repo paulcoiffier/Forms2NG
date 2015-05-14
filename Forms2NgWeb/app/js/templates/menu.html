@@ -1,0 +1,9 @@
+<div id="sidebar-wrapper" ng-controller="menuController">
+    <ul class="sidebar-nav">
+            <span ng-repeat="menu in menus">
+                <li>
+                    <a href="#/form/{{menu.formsName}}">{{menu.formsName}}</a>
+                </li>
+            </span>
+    </ul>
+</div>

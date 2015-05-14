@@ -1,0 +1,19 @@
+table {
+    table-layout: fixed;
+}
+
+table th, table td {
+    overflow: hidden;
+}
+
+table th {
+    text-align: center;
+}
+
+.loading { border:1px solid #ddd; padding:20px; margin:40px 5px; width:80px;}
+
+.navbar-brand
+{
+    background: url(img/logo.png) no-repeat left center;
+
+}
